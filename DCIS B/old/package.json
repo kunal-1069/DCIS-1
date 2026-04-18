@@ -1,0 +1,20 @@
+{
+  "name": "dev-audit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "worker:github": "node src/workers/githubWorker.js",
+    "worker:analysis": "node src/workers/analysisWorker.js",
+    "worker:llm": "node src/workers/llmWorker.js",
+    "worker:market": "node src/workers/marketWorker.js",
+    "worker:all": "node src/workers/index.js",
+    "db:migrate": "node src/db/migrate.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
