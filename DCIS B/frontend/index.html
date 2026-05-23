@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Audit Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Global Header -->
+  <header class="Header">
+    <div class="Header-item Header-item--logo">
+      <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" class="octicon octicon-mark-github">
+        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+      </svg>
+    </div>
+    <div class="Header-item Header-item--search">
+      <input type="text" class="form-control input-sm header-search-input" placeholder="Search or jump to..." aria-label="Search">
+    </div>
+    <div class="Header-item Header-item--nav">
+      <nav class="Header-nav">
+        <a href="#" class="Header-link">Pull requests</a>
+        <a href="#" class="Header-link">Issues</a>
+        <a href="#" class="Header-link">Marketplace</a>
+        <a href="#" class="Header-link">Explore</a>
+      </nav>
+    </div>
+    <div class="Header-item Header-item--profile">
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span id="server-status">Connecting...</span>
+      </div>
+      <img src="https://avatars.githubusercontent.com/u/9919?s=40&v=4" alt="@github" class="avatar">
+    </div>
+  </header>
+
+  <!-- Sub Navigation (Underline Nav) -->
+  <div class="UnderlineNav-container">
+    <nav class="UnderlineNav" aria-label="Repository">
+      <div class="UnderlineNav-body">
+        <a href="#" class="UnderlineNav-item selected" aria-current="page">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-code UnderlineNav-octicon"><path d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg>
+          Audits
+        </a>
+        <a href="#" class="UnderlineNav-item">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-issue-opened UnderlineNav-octicon"><path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path><path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"></path></svg>
+          History <span class="Counter">12</span>
+        </a>
+        <a href="#" class="UnderlineNav-item">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-gear UnderlineNav-octicon"><path d="M7.429 1.525a6.593 6.593 0 011.142 0c.036.003.108.036.137.146l.289 1.105c.147.56.55.967.997 1.189.174.086.341.183.501.29.417.278.97.423 1.53.27l1.102-.303c.11-.03.175.016.195.046.219.31.41.641.573.989.014.031.022.11-.059.19l-.915.902c-.432.426-.606 1.006-.47 1.548a7.025 7.025 0 010 1.162c-.136.542.038 1.122.47 1.548l.915.902c.081.08.073.159.059.19a6.49 6.49 0 01-.573.99c-.02.029-.086.074-.195.045l-1.103-.303c-.559-.153-1.112-.008-1.529.27-.16.107-.327.204-.5.29-.449.222-.851.628-.998 1.189l-.289 1.105c-.029.11-.101.143-.137.146a6.613 6.613 0 01-1.142 0c-.036-.003-.108-.036-.137-.146l-.289-1.105c-.147-.56-.55-.967-.997-1.189a6.335 6.335 0 01-.501-.29c-.417-.278-.97-.423-1.53-.27l-1.102.303c-.11.03-.175-.016-.195-.046a6.494 6.494 0 01-.573-.989c-.014-.031-.022-.11.059-.19l.915-.902c.432-.426.606-1.006.47-1.548a7.025 7.025 0 010-1.162c.136-.542-.038-1.122-.47-1.548l-.915-.902c-.081-.08-.073-.159-.059-.19a6.464 6.464 0 01.573-.989c.02-.03.085-.075.195-.046l1.102.303c.56.153 1.113.008 1.53-.27.16-.107.326-.204.5-.29.449-.222.851-.628.998-1.189l.289-1.105c.029-.11.101-.143.137-.146zM8 0c-.236 0-.47.01-.701.03-.743.065-1.29.615-1.458 1.261l-.29 1.106c-.017.066-.078.158-.211.224a5.994 5.994 0 00-.144.075c-.066.038-.172.062-.276-.003l-1.102-.303c-.66-.182-1.391.026-1.802.585a7.99 7.99 0 00-.735 1.268c-.378.784-.132 1.626.442 2.193l.915.902c.045.045.074.126.046.223a8.528 8.528 0 000 1.438c.028.097-.001.178-.046.223l-.915.902c-.574.567-.82 1.41-.442 2.193.208.432.454.85.735 1.268.411.56 1.142.767 1.802.585l1.102-.303c.104-.065.21-.041.276-.003.048.028.096.052.144.075.133.066.194.158.211.224l.29 1.106c.168.646.715 1.196 1.458 1.261a8.046 8.046 0 001.402 0c.743-.065 1.29-.615 1.458-1.261l.29-1.106c.017-.066.078-.158.211-.224a5.994 5.994 0 00.144-.075c.066-.038.172-.062.276.003l1.102.303c.66.182 1.391-.026 1.802-.585a7.99 7.99 0 00.735-1.268c.378-.784.132-1.626-.442-2.193l-.915-.902c-.045-.045-.074-.126-.046-.223a8.528 8.528 0 000-1.438c-.028-.097.001-.178.046-.223l.915-.902c.574-.567.82-1.41.442-2.193a7.99 7.99 0 00-.735-1.268c-.411-.56-1.142-.767-1.802-.585l-1.102.303c-.104.065-.21.041-.276.003a5.53 5.53 0 00-.144-.075c-.133-.066-.194-.158-.211-.224l-.29-1.106C10.033.645 9.486.095 8.743.03A8.046 8.046 0 008 0zm1.5 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM11 8a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          Settings
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Container -->
+  <div class="Layout">
+    <!-- Sidebar -->
+    <div class="Layout-sidebar">
+      <div class="Box Box--condensed mb-3">
+        <div class="Box-header">
+          <h3 class="Box-title">About</h3>
+        </div>
+        <div class="Box-body">
+          <p class="color-fg-muted text-small">Dev Audit is a comprehensive auditing tool for analyzing live web applications, reviewing codebases, and scanning repositories.</p>
+        </div>
+      </div>
+
+      <div class="BorderGrid BorderGrid--spacious">
+        <div class="BorderGrid-row">
+          <div class="BorderGrid-cell">
+            <h3 class="h4 mb-2">Contributors</h3>
+            <ul class="list-style-none d-flex flex-wrap mb-n2">
+              <li class="mb-2 mr-2">
+                <img src="https://avatars.githubusercontent.com/u/9919?s=64&v=4" class="avatar avatar-user" width="32" height="32" alt="@github">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="Layout-main">
+      <div class="Subhead">
+        <div class="Subhead-heading">Trigger New Audit</div>
+      </div>
+
+      <!-- Action Card -->
+      <div class="Box mb-4">
+        <div class="Box-header Box-header--blue">
+          <h3 class="Box-title">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-search mr-2"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+            Target Information
+          </h3>
+        </div>
+        <div class="Box-body">
+          <form id="audit-form" class="audit-form">
+            <dl class="form-group mt-0">
+              <dt><label for="url">Repository or App URL</label></dt>
+              <dd>
+                <input class="form-control width-full" type="url" id="url" name="url" placeholder="https://example.com" required>
+                <p class="note">Enter the full URL of the application you want to audit.</p>
+              </dd>
+            </dl>
+            <div class="form-actions mt-3">
+              <button type="submit" class="btn btn-primary" id="submit-btn">
+                <span class="btn-text">Start Audit</span>
+                <span class="loader hidden"></span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="Subhead mt-5">
+        <div class="Subhead-heading">Audit Results</div>
+      </div>
+      
+      <div id="results-container" class="results-empty">
+        <div class="blankslate">
+          <svg height="24" class="octicon octicon-repo blankslate-icon" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+          <h3 class="mb-1">No results available</h3>
+          <p>Enter a URL above and click "Start Audit" to begin generating results.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
